@@ -3,6 +3,7 @@ from schemas.prediction_schema import PredictionCreateBase, PredictionResponseBa
 
 router = APIRouter(prefix='/lr')
 
+# Endpoint to make a post for a prediction in the random forest model
 @router.post('/prediction', response_model=PredictionResponseBase)
 async def linear_regression_prediction(prediction_post: PredictionCreateBase):
     
