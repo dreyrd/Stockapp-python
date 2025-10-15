@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 class Settings(BaseSettings):
-    API_V1_STR: str = 'api/v1'
+    API_V1_STR: str = '/api/v1'
     PORT: int = int(os.getenv('PORT'))
     HOST: str = os.getenv('HOST')
     
