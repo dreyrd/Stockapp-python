@@ -1,13 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-import os
+from core.configs import settings
 
-load_dotenv()
-
-PORT = int(os.getenv('PORT'))
-HOST = os.getenv('HOST')
 
 app = FastAPI(title='Stockapp-python')
 
@@ -33,4 +28,4 @@ async def teste():
     return {'Olaa': 'testee'}
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', host=HOST, port=PORT, log_level='debug', reload=True)
+    uvicorn.run('main:app', host=settings.HOST, port=settings.PORT, log_level='debug', reload=True)
