@@ -2,6 +2,7 @@ import joblib
 import pandas as pd
 import os
 
+# The base class to create a class to execute a trained model form scikit-learn
 class PredictionBaseModel:
     def __init__(self, filename: str):
         service_dir = os.path.dirname(os.path.abspath(__file__))
