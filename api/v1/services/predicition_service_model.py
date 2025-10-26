@@ -30,14 +30,14 @@ class PredictionBaseModel:
         features = {}
         for lag in range(1, 6):
             row = history_df.iloc[-lag]
-            for col in ['open', 'high', 'low', 'close', 'adj_close', 'volume', 'dividend_yield']:
+            for col in ["o", "h", "l", "c", "v"]:
                 features[f'{col}_lag{lag}'] = row[col]
         
         X_input = pd.DataFrame([features])[self.feature_cols]
         predict = self.model.predict(X_input)[0]
         high_low_prediction = {
-            'high': float(predict[0]),
-            'low': float(predict[1])
+            'h': float(predict[0]),
+            'l': float(predict[1])
         }
         
         return high_low_prediction

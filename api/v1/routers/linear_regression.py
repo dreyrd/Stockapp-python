@@ -12,11 +12,11 @@ async def linear_regression_prediction(stock_lag: PredictionCreateBase):
         prediction_result = linear_regression_model.predict([dict(day) for day in stock_lag.history])
         
         response = PredictionResponseBase(
-            high=prediction_result['high'],
-            low=prediction_result['low']
+            h=prediction_result['h'],
+            l=prediction_result['l']
         )
     except ValueError as e:
-        raise HTTPException(detail='Insira os valores corretamente', status_code=status.HTTP_400_BAD_REQUEST)
+        raise HTTPException(detail=f'Erro de validação: {str(e)}', status_code=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         raise HTTPException(detail='Ocorreu algum erro ao solicitar sua requisição', status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return response

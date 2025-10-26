@@ -12,8 +12,8 @@ async def random_forest_prediction(stock_lag: PredictionCreateBase):
         prediction_result = random_forest_model.predict([dict(day) for day in stock_lag.history])
         
         response = PredictionResponseBase(
-            high=prediction_result['high'],
-            low=prediction_result['low']
+            h=prediction_result['h'],
+            l=prediction_result['l']
         )
     except ValueError as e:
         raise HTTPException(detail='Insira os valores corretamente', status_code=status.HTTP_400_BAD_REQUEST)
